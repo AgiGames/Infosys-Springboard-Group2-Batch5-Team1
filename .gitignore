@@ -1,2 +1,2 @@
 venv/
-src/streamlit/__pycache__
+__pycache__/
