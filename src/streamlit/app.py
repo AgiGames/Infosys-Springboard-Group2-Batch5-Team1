@@ -60,15 +60,15 @@ def clean_data(self) -> pd.DataFrame:
 
         elif title == 'Anomaly Detection':
             st.markdown("### ***Given some data, this detector says if it significantly deviates from the norm.***")
-            heart_rate = st.number_input("Heart Rate")
-            time_elapsed = st.number_input("Time Elapsed During Run")
-            average_running_cadence = st.number_input("Average Running Cadence")
-            total_calories = st.number_input("Total Calories Burned")
-            distance = st.number_input("Distance Covered During Run")
+            heart_rate = st.number_input("Heart Rate (Beats per Minute)")
+            time_elapsed = st.number_input("Time Elapsed During Run (Seconds)")
+            average_running_cadence = st.number_input("Average Running Cadence (Steps per Minute)")
+            total_calories = st.number_input("Total Calories Burned (kCal)")
+            distance = st.number_input("Distance Covered During Run (KMs)")
             submit_data = st.button("Submit Data")
 
             if submit_data:
-                x_star = [heart_rate, time_elapsed, average_running_cadence, total_calories, distance]
+                x_star = [heart_rate, time_elapsed, average_running_cadence / 2, total_calories / 2, distance]
                 anomaly = ad.flag_anomaly(x_star)
                 if anomaly:
                     st.warning("The given data is an anomaly.")
